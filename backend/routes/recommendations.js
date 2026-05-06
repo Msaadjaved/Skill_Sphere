@@ -54,7 +54,7 @@ router.get("/friends", requireAuth, async (req, res) => {
  * Graph pattern:
  *  (me)-[:FOLLOWS]->(peer)-[:HAS_SKILL]->(skill)<-[:TEACHES]-(course)
  *  WHERE me is NOT ENROLLED_IN course
- */ 
+ */
 router.get("/courses", requireAuth, async (req, res) => {
   try {
     const records = await runNeo4j(
@@ -89,6 +89,7 @@ router.get("/courses", requireAuth, async (req, res) => {
 /**
  * GET /api/recommendations/skills
  *
+ * ─── Skill Gap Analysis ───
  * PATH TRAVERSAL QUERY #3 – Skill Gap Recommendations
  * Finds skills that users similar to you (who share at least one skill)
  * have, but you don't yet.
