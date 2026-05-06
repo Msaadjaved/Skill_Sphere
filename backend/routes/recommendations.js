@@ -54,7 +54,7 @@ router.get("/friends", requireAuth, async (req, res) => {
  * Graph pattern:
  *  (me)-[:FOLLOWS]->(peer)-[:HAS_SKILL]->(skill)<-[:TEACHES]-(course)
  *  WHERE me is NOT ENROLLED_IN course
- */
+ */ 
 router.get("/courses", requireAuth, async (req, res) => {
   try {
     const records = await runNeo4j(
