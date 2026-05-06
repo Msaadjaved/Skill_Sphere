@@ -47,6 +47,7 @@ router.get("/friends", requireAuth, async (req, res) => {
 /**
  * GET /api/recommendations/courses
  *
+ * ─── Course Recommendations via Peer Skills ───
  * PATH TRAVERSAL QUERY #2 – Course Recommendations via Shared Skills
  * Finds courses that teach skills your followed users have,
  * but you haven't enrolled in yet.
@@ -126,6 +127,7 @@ router.get("/skills", requireAuth, async (req, res) => {
 /**
  * GET /api/recommendations/shortest-path/:targetId
  *
+ * ─── Shortest Connection Path ───
  * PATH TRAVERSAL QUERY #4 – Shortest Connection Path
  * Returns the shortest FOLLOWS path between the current user and a target user.
  * Useful for "how do I know this person?".
