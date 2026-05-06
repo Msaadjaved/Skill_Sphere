@@ -102,6 +102,7 @@ router.get("/popular-courses", async (req, res) => {
  *  $lookup   → join with users collection for names
  *  $sort     → by average progress
  */
+
 router.get("/user-progress-summary", async (req, res) => {
   try {
     const data = await withCache(
