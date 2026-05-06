@@ -96,7 +96,6 @@ router.get("/popular-courses", async (req, res) => {
  * AGGREGATION PIPELINE #2 – User Progress Summary
  * For each user, computes: number of courses enrolled, average progress,
  * number of completed courses, and the most-learned skill tags.
- *
  * Stages:
  *  $lookup   → join progress into enrollments
  *  $group    → aggregate per user
