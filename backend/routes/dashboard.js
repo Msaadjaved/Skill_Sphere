@@ -23,6 +23,7 @@ const router = express.Router();
  */
 router.get("/popular-courses", async (req, res) => {
   try {
+    // Redis cache: TTL 180s to reduce MongoDB aggregation load
     const data = await withCache(
       "dashboard:popular-courses",
       async () => {
