@@ -1,3 +1,4 @@
+// Course CRUD: list, create with auto-embedding, enroll, progress
 // routes/courses.js
 const express = require("express");
 const { ObjectId } = require("mongodb");
