@@ -150,7 +150,8 @@ async function enroll(courseId, btn) {
   }
 }
 
-// ── Dashboard ───────────────────────────────────────────────
+
+// ─── Dashboard, leaderboard and recommendations ───
 async function loadDashboard() {
   if (!session) { showPage('login'); return; }
 
