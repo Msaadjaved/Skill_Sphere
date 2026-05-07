@@ -96,13 +96,13 @@ router.get("/popular-courses", async (req, res) => {
  * AGGREGATION PIPELINE #2 – User Progress Summary
  * For each user, computes: number of courses enrolled, average progress,
  * number of completed courses, and the most-learned skill tags.
+ *
  * Stages:
  *  $lookup   → join progress into enrollments
  *  $group    → aggregate per user
  *  $lookup   → join with users collection for names
  *  $sort     → by average progress
  */
-
 router.get("/user-progress-summary", async (req, res) => {
   try {
     const data = await withCache(
@@ -193,6 +193,7 @@ router.get("/leaderboard", async (req, res) => {
 });
 
 /**
+ * ─── Platform Stats ───
  * GET /api/dashboard/stats
  * Quick platform stats (cached)
  */
