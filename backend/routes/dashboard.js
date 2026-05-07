@@ -223,6 +223,7 @@ router.get("/stats", async (req, res) => {
 });
 
 /**
+ * ─── Personal Dashboard Stats ───
  * GET /api/dashboard/my-stats (protected)
  * Personal dashboard for logged-in user
  */
