@@ -23,6 +23,7 @@ const router = express.Router();
  */
 router.get("/popular-courses", async (req, res) => {
   try {
+    // Redis cache: TTL 180s to reduce MongoDB aggregation load
     const data = await withCache(
       "dashboard:popular-courses",
       async () => {
@@ -96,13 +97,13 @@ router.get("/popular-courses", async (req, res) => {
  * AGGREGATION PIPELINE #2 – User Progress Summary
  * For each user, computes: number of courses enrolled, average progress,
  * number of completed courses, and the most-learned skill tags.
+ *
  * Stages:
  *  $lookup   → join progress into enrollments
  *  $group    → aggregate per user
  *  $lookup   → join with users collection for names
  *  $sort     → by average progress
  */
-
 router.get("/user-progress-summary", async (req, res) => {
   try {
     const data = await withCache(
@@ -180,6 +181,7 @@ router.get("/user-progress-summary", async (req, res) => {
 });
 
 /**
+ * ─── Redis Leaderboard Endpoint ───
  * GET /api/dashboard/leaderboard
  * Redis Sorted Set leaderboard – top learners by points
  */
@@ -193,6 +195,7 @@ router.get("/leaderboard", async (req, res) => {
 });
 
 /**
+ * ─── Platform Stats ───
  * GET /api/dashboard/stats
  * Quick platform stats (cached)
  */
@@ -221,6 +224,7 @@ router.get("/stats", async (req, res) => {
 });
 
 /**
+ * ─── Personal Dashboard Stats ───
  * GET /api/dashboard/my-stats (protected)
  * Personal dashboard for logged-in user
  */

@@ -1,4 +1,3 @@
-// Course CRUD: list, create with auto-embedding, enroll, progress
 // routes/courses.js
 const express = require("express");
 const { ObjectId } = require("mongodb");
@@ -187,7 +186,7 @@ router.post("/:id/enroll", requireAuth, async (req, res) => {
       .collection("courses")
       .updateOne({ _id: courseId }, { $inc: { enrollmentCount: 1 } });
 
-    // Invalidate cache
+    // Invalidate Redis cache on enrollment
     await getRedis().del("courses:all");
 
     // Neo4j: User ENROLLED_IN Course
