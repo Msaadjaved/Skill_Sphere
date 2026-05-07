@@ -180,6 +180,7 @@ router.get("/user-progress-summary", async (req, res) => {
 });
 
 /**
+ * ─── Redis Leaderboard Endpoint ───
  * GET /api/dashboard/leaderboard
  * Redis Sorted Set leaderboard – top learners by points
  */
