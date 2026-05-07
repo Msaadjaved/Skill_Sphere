@@ -92,7 +92,7 @@ async function loadCourses() {
     grid.innerHTML = `<div class="loading">Error: ${e.message}</div>`;
   }
 }
-
+// ─── AI Vector Search UI ───
 async function vectorSearch() {
   const q = document.getElementById('search-input').value.trim();
   if (!q) return loadCourses();
